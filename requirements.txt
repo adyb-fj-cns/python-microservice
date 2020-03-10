@@ -1,0 +1,6 @@
+Flask
+gevent
+py-healthcheck
+pytest
+testcontainers
+
