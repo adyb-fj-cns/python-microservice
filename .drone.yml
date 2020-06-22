@@ -31,6 +31,15 @@ steps:
     repo: adybfjcns/python-microservice
     tags: [ "${DRONE_COMMIT_SHA:0:7}","latest" ]
 
+- name: scan
+  image: jmccann/drone-clair:1
+  settings:
+    url: http://104.248.166.93:30060
+    username: adybfjcns
+    password:
+      from_secret: docker_password
+    scan_image: adybfjcns/python-microservice:${DRONE_COMMIT_SHA:0:7}
+
 - name: deploy
   image: adybfjcns/drone-k8-deploy
   environment:
